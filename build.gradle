@@ -3,7 +3,7 @@ apply plugin: 'com.jfrog.bintray'
 apply plugin: 'com.github.dcendents.android-maven'
 
 group = 'hu.ottone.ntaglib' // Change this to match your package name
-version = '1.0.1' // Change this to match your version number
+version = '1.0.2' // Change this to match your version number
 
 
 
@@ -15,8 +15,8 @@ android {
     defaultConfig {
         minSdkVersion 16
         targetSdkVersion 23
-        versionCode 1
-        versionName "1.0"
+        versionCode 2
+        versionName "1.0.2"
     }
     buildTypes {
         release {
@@ -56,10 +56,10 @@ bintray {
         name = 'hu.ottone.ntaglib'
 
         version {
-            name = '1.0.1-initial'
-            desc = 'NTag tags interface lib'
+            name = '1.0.2'
+            desc = 'Android library for NTag21x interface'
             released  = new Date()
-            vcsTag = '1.0.1'
+            vcsTag = '1.0.2'
         }
 
         licenses = ['Apache-2.0']
