@@ -96,7 +96,7 @@ public class Ntag216Reader implements INTag21xReader {
             authenticate(config.getAuthPass());
         }
         if ((configBits & Ntag21xConfig.CONF_FORMAT) != 0) {
-            format();
+            format(config.getFormatStartAddress());
         }
         if ((configBits & Ntag21xConfig.CONF_INIT_DATA_BIT) != 0) {
             HashMap<Byte, byte[]> initData = config.getInitDataArray();
@@ -231,9 +231,9 @@ public class Ntag216Reader implements INTag21xReader {
     }
 
     @Override
-    public byte[] format() throws IOException{
+    public byte[] format(byte startAddress) throws IOException{
         byte[] result = null;
-        for (int i = 16; i < 226; i++) {
+        for (int i = startAddress; i < 226; i++) {
             result = write((byte)i, new byte[]{(byte)0, (byte)0, (byte)0, (byte)0});
         }
         return result;
@@ -409,11 +409,11 @@ public class Ntag216Reader implements INTag21xReader {
     }
 
     @Override
-    public byte[] format(INTagCallback callback) throws IOException {
+    public byte[] format(final byte startAddress, INTagCallback callback) throws IOException {
         NFCTask task = new NFCTask(new INTagFunction() {
             @Override
             public void callFunction() throws IOException {
-                format();
+                format(startAddress);
             }
         }, callback);
         task.execute();

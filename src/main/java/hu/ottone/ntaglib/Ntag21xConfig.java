@@ -7,16 +7,7 @@ import java.util.HashMap;
  */
 public class Ntag21xConfig {
 
-    private byte[] mPassword = {(byte)0xFF, (byte)0xFF, (byte)0xFF, (byte)0xFF};
-    private byte auth0;
-    private byte[] lockBytes = new byte[] {0, 0};
-    private short lockBytesShort;
-    private String authPass;
-    private HashMap<Byte, byte[]> initDataArray = new HashMap<>();
-    private HashMap<Byte, String> initMessageArray = new HashMap<>();
-
-    private byte configBits = 0;
-
+    public static final byte DEFAULT_FORMAT_START_ADDRESS = 16;
     public static final byte CONF_LOCK_STATIC_PAGE_BIT = 1;
     public static final byte CONF_SET_AUTH_PAGE_BIT = 2;
     public static final byte CONF_SET_PASSWORD_BIT = 4;
@@ -24,6 +15,16 @@ public class Ntag21xConfig {
     public static final byte CONF_INIT_MESSAGE = 16;
     public static final byte CONF_FORMAT = 32;
     public static final byte CONF_AUTH_BIT = 64;
+
+    private byte configBits = 0;
+    private byte[] mPassword = {(byte)0xFF, (byte)0xFF, (byte)0xFF, (byte)0xFF};
+    private byte auth0;
+    private byte formatStartAddress = DEFAULT_FORMAT_START_ADDRESS;
+    private byte[] lockBytes = new byte[] {0, 0};
+    private short lockBytesShort;
+    private String authPass;
+    private HashMap<Byte, byte[]> initDataArray = new HashMap<>();
+    private HashMap<Byte, String> initMessageArray = new HashMap<>();
 
     public void authenticate(String pass) {
         authPass = pass;
@@ -150,5 +151,13 @@ public class Ntag21xConfig {
 
     public String getAuthPass() {
         return authPass;
+    }
+
+    public void setFormatStartAddress(byte address) {
+        formatStartAddress = address;
+    }
+
+    public byte getFormatStartAddress() {
+        return formatStartAddress;
     }
 }

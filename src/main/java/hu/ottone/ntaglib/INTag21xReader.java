@@ -48,8 +48,8 @@ public interface INTag21xReader {
     byte[] setAuth0(byte value) throws IOException;
     byte[] setAuth0(byte value, INTagCallback callback) throws IOException;
 
-    byte[] format() throws IOException;
-    byte[] format(INTagCallback callback) throws IOException;
+    byte[] format(byte startAddress) throws IOException;
+    byte[] format(byte startAddress, INTagCallback callback) throws IOException;
 
     byte[] setLockBits(byte[] lockBits) throws IOException;
     byte[] setLockBits(byte[] lockBits, INTagCallback callback) throws IOException;
