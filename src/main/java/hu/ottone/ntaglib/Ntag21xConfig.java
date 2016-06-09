@@ -12,8 +12,8 @@ public class Ntag21xConfig {
     public static final byte CONF_SET_AUTH_PAGE_BIT = 2;
     public static final byte CONF_SET_PASSWORD_BIT = 4;
     public static final byte CONF_INIT_DATA_BIT = 8;
-    public static final byte CONF_INIT_MESSAGE = 16;
-    public static final byte CONF_FORMAT = 32;
+    public static final byte CONF_INIT_MESSAGE_BIT = 16;
+    public static final byte CONF_FORMAT_BIT = 32;
     public static final byte CONF_AUTH_BIT = 64;
 
     private byte configBits = 0;
@@ -90,15 +90,15 @@ public class Ntag21xConfig {
 
     public void initMessage(byte page, String message) {
         initMessageArray.put(page, message);
-        setConfigBits(CONF_INIT_MESSAGE);
+        setConfigBits(CONF_INIT_MESSAGE_BIT);
     }
 
     public void enableFormat() {
-        setConfigBits(CONF_FORMAT);
+        setConfigBits(CONF_FORMAT_BIT);
     }
 
     public void disableFormat() {
-        cancelConfigBits(CONF_FORMAT);
+        cancelConfigBits(CONF_FORMAT_BIT);
     }
 
     public byte getConfigBits() {

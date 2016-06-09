@@ -95,7 +95,7 @@ public class Ntag216Reader implements INTag21xReader {
         if ((configBits & Ntag21xConfig.CONF_AUTH_BIT) != 0) {
             authenticate(config.getAuthPass());
         }
-        if ((configBits & Ntag21xConfig.CONF_FORMAT) != 0) {
+        if ((configBits & Ntag21xConfig.CONF_FORMAT_BIT) != 0) {
             format(config.getFormatStartAddress());
         }
         if ((configBits & Ntag21xConfig.CONF_INIT_DATA_BIT) != 0) {
@@ -109,7 +109,7 @@ public class Ntag216Reader implements INTag21xReader {
                 Log.i("reader", "init_data result (hex): " + ByteOperator.bytesToHex(result));
             }
         }
-        if ((configBits & Ntag21xConfig.CONF_INIT_MESSAGE) != 0) {
+        if ((configBits & Ntag21xConfig.CONF_INIT_MESSAGE_BIT) != 0) {
             HashMap<Byte, String> initData = config.getInitMessageArray();
             Iterator it = initData.entrySet().iterator();
             while (it.hasNext()) {
